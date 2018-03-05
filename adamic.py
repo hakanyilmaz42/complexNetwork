@@ -13,9 +13,11 @@ G.add_edges_from(ebunchTam)
 
 
 #preds = nx.adamic_adar_index(G)
-preds = nx.jaccard_coefficient(G)
+#preds = nx.jaccard_coefficient(G)
+#preds = nx.preferential_attachment(G)
+preds=nx.resource_allocation_index(G)
 
-file = open("jaccard.txt","w")
+file = open("resource_allocation_index.txt","w")
 
 for u, v, p in preds:
     file.write('\n%d / %d / %.8f' % (u, v, p))
