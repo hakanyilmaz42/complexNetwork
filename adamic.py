@@ -12,12 +12,18 @@ G.add_nodes_from(range(1,1015))
 G.add_edges_from(ebunchTam)
 
 
+for i in range(1,1015):
+    G.nodes[i]['community']=0
+
 #preds = nx.adamic_adar_index(G)
 #preds = nx.jaccard_coefficient(G)
 #preds = nx.preferential_attachment(G)
-preds=nx.resource_allocation_index(G)
+#preds=nx.resource_allocation_index(G)
+#preds=nx.cn_soundarajan_hopcroft(G)
+#preds=nx.ra_index_soundarajan_hopcroft(G)
+preds=nx.within_inter_cluster(G)
 
-file = open("resource_allocation_index","w")
+file = open("within_inter_cluster.txt","w")
 
 for u, v, p in preds:
     file.write('\n%d / %d / %.8f' % (u, v, p))
